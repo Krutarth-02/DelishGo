@@ -12,9 +12,9 @@ import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
-import ListItem from '../ListItem';
-import PaginationElement from '../PaginationElement';
-import Button from '../Button';
+import ListItem from './ListItem';
+import PaginationElement from './PaginationElement';
+import Button from './Button';
 
 const pages = [
   {
