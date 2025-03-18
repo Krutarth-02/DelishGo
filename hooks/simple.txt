@@ -1,0 +1,1 @@
+this file contain allows shring common behaviors between component define in this file. like userThemeColor() contain the color use in the entire app.
