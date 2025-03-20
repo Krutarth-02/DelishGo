@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 type RootStackParamList = {
   Login: undefined;
@@ -15,42 +15,50 @@ type Props = {
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <ImageBackground source={require('../assets/images/img.png')} style={styles.background} />
       <Text style={styles.title}>Login</Text>
       <TextInput style={styles.input} placeholder="Username" />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry />
       <TouchableOpacity style={styles.button} onPress={() => navigation.replace('Home')}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-    </View>
+    </View>       
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: 20,
+  },
+  ImageBackground: {
+    flex: 1,
+    width: '100%',
+    height: '360%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
-    marginBottom: 16,
-    textAlign: 'center',
+    marginBottom: 20,
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 8,
+    backgroundColor: 'white',
+    padding: 10,
+    marginBottom: 15,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: 'blue',
     padding: 10,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 16,
+    color: 'white',
+  },
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
