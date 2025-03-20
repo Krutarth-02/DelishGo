@@ -1,16 +1,7 @@
 import React from 'react';
 import { Text, Image, TouchableOpacity, StyleSheet, View } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
-import HomeScreen from './HomeScreen';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-// Define navigation types
-type RootStackParamList = {
-  Onboarding: undefined;
-  Home: undefined;
-};
-
-type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding'>;
+import { useNavigation } from '@react-navigation/native';
 
 // Custom Button Component
 const CustomButton: React.FC<{ title: string; onPress?: () => void }> = ({ title, onPress }) => (
@@ -19,13 +10,14 @@ const CustomButton: React.FC<{ title: string; onPress?: () => void }> = ({ title
   </TouchableOpacity>
 );
 
-const OnboardingScreen: React.FC<Props> = ({ navigation }) => {
+const OnboardingScreen: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <View style={{ flex: 1 }}>
       <Onboarding
         SkipButtonComponent={({ onPress }) => <CustomButton title="Skip" onPress={onPress} />}
         NextButtonComponent={({ onPress }) => <CustomButton title="Next" onPress={onPress} />}
-        onSkip={() => navigation.replace('Onboarding')}
+        DoneButtonComponent={({ onPress }) => <CustomButton title="Done" onPress={onPress} />}
         pages={[
           {
             backgroundColor: '#fff',
