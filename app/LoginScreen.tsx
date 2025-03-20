@@ -1,7 +1,18 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+type RootStackParamList = {
+  Login: undefined;
+  Home: undefined;
+};
 
-const LoginScreen: React.FC = ({ navigation }) => {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
+
+const LoginScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>

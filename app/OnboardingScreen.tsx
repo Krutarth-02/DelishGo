@@ -2,6 +2,17 @@ import React from 'react';
 import { Text, Image, TouchableOpacity, StyleSheet, View } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+// Define Stack Navigation Types
+type RootStackParamList = {
+  Onboarding: undefined;
+  Home: undefined;
+  LoginScreen: undefined;
+};
+
+// Define Navigation Prop Type
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
 
 // Custom Button Component
 const CustomButton: React.FC<{ title: string; onPress?: () => void }> = ({ title, onPress }) => (
@@ -11,13 +22,21 @@ const CustomButton: React.FC<{ title: string; onPress?: () => void }> = ({ title
 );
 
 const OnboardingScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();  // ✅ Added correct type
+
   return (
     <View style={{ flex: 1 }}>
       <Onboarding
         SkipButtonComponent={({ onPress }) => <CustomButton title="Skip" onPress={onPress} />}
         NextButtonComponent={({ onPress }) => <CustomButton title="Next" onPress={onPress} />}
-        DoneButtonComponent={({ onPress }) => <CustomButton title="Done" onPress={onPress} />}
+        DoneButtonComponent={({ onPress }) => (
+          <CustomButton
+            title="Done"
+            onPress={() => {
+              navigation.replace('LoginScreen');  // ✅ Fixed navigation issue
+            }}
+          />
+        )}
         pages={[
           {
             backgroundColor: '#fff',
