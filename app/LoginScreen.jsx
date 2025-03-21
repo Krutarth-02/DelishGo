@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-const LoginScreen: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+const LoginScreen = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     console.log('Login clicked');
-    // API call to backend (if needed)
   };
-// Define the types for navigation
-type RootStackParamList = {
-  Login: undefined;
-  SignUp: undefined;
-};
+
   return (
     <View style={styles.container}>
       <Image source={require('../assets/images/logo.png')} style={styles.logo} />
@@ -69,12 +57,13 @@ type RootStackParamList = {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.signUpText}>
-        Don't have an account?{' '}
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-  <Text style={styles.signUpLink}>Sign up</Text>
-</TouchableOpacity>;
-      </Text>
+      {/* Sign Up Navigation Button */}
+      <View style={styles.signUpContainer}>
+        <Text style={styles.signUpText}>Don't have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+          <Text style={styles.signUpLink}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -160,8 +149,11 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 10,
   },
-  signUpText: {
+  signUpContainer: {
+    flexDirection: 'row',
     marginTop: 20,
+  },
+  signUpText: {
     color: '#666',
   },
   signUpLink: {

@@ -3,17 +3,9 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-// Import necessary types for navigation
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-type RootStackParamList = {
-  Login: undefined;
-};
-
-const SignUpScreen: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-  const [profileImage, setProfileImage] = useState<string | null>(null);
+const SignUpScreen = () => {
+  const navigation = useNavigation();
+  const [profileImage, setProfileImage] = useState(null);
 
   return (
     <View style={styles.container}>

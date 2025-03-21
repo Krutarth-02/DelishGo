@@ -11,8 +11,9 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "**/*.jsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "constants/Colors.ts",
+    "constants/Colors.ts", "app/index.jsx", "app/_layout.jsx", "app/LoginScreen.jsx", "app/OnboardingScreen.jsx", "app/SignupScreen.jsx",
   ]
 }
